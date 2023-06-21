@@ -1,0 +1,195 @@
+.cards-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  z-index: 1;
+
+  @media screen and (min-width: 1000px) {
+    padding: 0 32px;
+  }
+
+  &__cards {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(1, 1fr);
+    
+    @media screen and (min-width: 704px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    
+    @media screen and (min-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    color: $black;
+    text-align: center;
+    font-weight: $font-weight-normal;
+    font-family: $font-family-titles;
+    font-size: $font-size-title2-mobile;
+    line-height: $line-height-title2-mobile;
+
+    @media screen and (min-width: 600px) {
+      font-size: $font-size-title4;
+      line-height: $line-height-title4-medium;
+    }
+
+    @media screen and (min-width: 992px) {
+      font-size: $font-size-title1;
+      line-height: $line-height-title4-big;
+    }
+
+    &:after {
+      content: url('./img/line-24.svg');
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-60%) scale(.8);
+  
+      @media screen and (min-width: 1000px) {
+        transform: translateX(-65%) scale(1);
+      }
+    }
+  }
+
+  &__description {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-family: $font-family-text;
+    font-size: $font-size-mobile;
+    line-height: $line-height;
+    text-align: center;
+
+    @media screen and (min-width: 600px) {
+      font-size: $font-size-base;
+    }
+  }
+}
+
+.card {
+  position: relative;
+  margin-top: 66px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+
+  @media screen and (min-width: 704px) {
+    margin-top: 36px;
+  }
+
+  &:nth-child(1) {
+    margin-top: 36px;
+    color: $azure;
+
+    @media screen and (min-width: 600px) {
+      margin-top: 26px;
+    }
+
+    @media screen and (min-width: 704px) {
+      margin-top: 36px;
+    }
+  }
+
+  &:nth-child(2n) {
+    color: $light-blue;
+  }
+
+  &:nth-child(3n) {
+    color: $mustard;
+    
+    @media screen and (min-width: 704px) {
+      grid-column: 1 / span 2;
+      margin-top: 56px;
+    }
+
+    @media screen and (min-width: 992px) {
+      grid-column: 3;
+      margin-top: 36px;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: -50px;
+    left: 50%;
+    background-color: $white; 
+    border: 2px none;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 1;
+    box-shadow: 0 0 4px #a9a9a9;
+    transform: translateX(-50%);
+  
+    &__circle {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      height: 80px;
+      width: 80px;    
+      border: 5px solid;    
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      
+      &__item {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        transform: translate(-50%, -50%);
+      }
+    } 
+  }
+
+  &__content {
+    height: 100%;
+    padding: 0px;
+    background-color: $white;
+    border: 2px solid;
+    border-radius: 12px;
+    box-shadow: 6px 6px 8px rgb(169 169 169 / 33%);
+
+    &__ellipse {
+      position: relative;
+      top: -2px;
+      left: 50%;
+      width: 111px;
+      height: 55px;
+      border: 2px solid;
+      border-top-color: $white;
+      border-radius: 50% / 0 0 100% 100%;
+      transform: translateX(-50%);
+    }
+
+    &__title {
+      margin-top: 20px;
+      padding: 0 6px;
+      color: $black;
+      font-family: $font-family-titles;
+      font-size: $font-size-subtitle4;
+      line-height: $line-height-subtitle4;
+      text-align: center;
+    }
+  
+    &__description {
+      margin: 0;
+      padding: 0 14px 6px 30px;
+      color: $black;
+      font-size: $font-size-mobile;
+      line-height: $line-height-mobile;
+      text-align: left;
+
+      &__item {
+        padding-bottom: 6px;
+      }
+    }
+  }
+}

@@ -1,0 +1,188 @@
+.leaders-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  margin: 20px auto 0;
+  z-index: 1;
+
+  &__title {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 0;
+    color: $black;
+    font-family: $font-family-titles;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-title2-mobile;
+    line-height: $line-height-title2-mobile;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 600px) {
+      font-size: $font-size-title2;
+      line-height: $line-height-title4-medium;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      font-size: $font-size-title1;
+      line-height: $line-height-title4-big;
+    }
+    
+    &:after {
+      content: url('./img/line-people.svg');
+      transform: translateX(-56%) scale(.8);
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+        
+      @media screen and (min-width: 600px) {
+        transform: translateX(-60%) scale(1);
+      }
+        
+      @media screen and (min-width: 1000px) {
+        transform: translateX(-60%) scale(1.2);
+      }
+    }
+  }
+
+  &__description {
+    position: relative;
+    text-align: center;
+    margin: 16px 0 6px;
+    color: $black;
+    font-size: $font-size-mobile;
+    line-height: $line-height-mobile;
+
+    @media screen and (min-width: 600px) {
+      margin: 24px 0;
+      font-size: $font-size;
+      line-height: $line-height;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      margin: 24px 0 32px;
+    }
+  }
+
+  &__leader-card {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+
+    @media screen and (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 600px;
+      gap: 8px;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: none;
+    }
+  }
+
+  &__contact-button{
+    position: relative;
+    display: block;
+    background: $white;
+    color: $black;
+    margin: 24px 0 0;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 21px;
+    font-family: $font-family-text;
+    font-size: $font-size-button-mobile;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    transition-property: transform, background-color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #DDEFE8;
+      transform: scale(1.02);
+    }
+
+    @media screen and (min-width: 1000px) {
+      margin: 32px 0 0;
+      padding: 10px 54px;
+      border-radius: 25px;
+      font-size: $font-size-subtitle4;
+    }    
+  }
+}
+
+.card-leader {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0 0 0;
+  padding: 0px;
+
+  @media screen and (min-width: 600px) {
+    padding: 0px;
+    margin: 0px;
+  }
+    
+  &__image {
+    position: relative;
+    display: block;
+    align-items: center;
+    width: 210px;
+    height: 210px;
+    margin-bottom: 16px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 5px solid #6fc2b4;
+    overflow: hidden;
+
+    @media screen and (min-width: 600px) {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__name,
+  &__position,
+  &__contact {
+    padding: 1px 7px;
+    margin: 0 0 5px;
+    box-shadow: 5px 5px 0px #6FC2B4;
+  }
+
+  &__name {
+    background-color: $white;
+    color: $black;
+    font-size: $font-size-subtitle1-mobile;
+    line-height: $line-height-title3-mobile;
+    font-family: $font-family-titles;
+  }
+
+  &__position {
+    background-color: $black;
+    color: $white;
+    font-size: $font-size-subtitle3-mobile;
+    line-height: $line-height-subtitle1-mobile;
+    font-family: $font-family-titles;
+  }
+  
+  &__contact {
+    background-color: $white;
+    color: $black;
+    font-size: $font-size-number;
+    line-height: $line-height-number;
+    font-family: $font-family-text;
+  }
+}

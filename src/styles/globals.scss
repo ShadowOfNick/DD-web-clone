@@ -1,0 +1,20 @@
+@import './typography.scss';
+@import './colors.scss';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: $font-size;
+  font-family: $font-family-text;
+  margin: 0;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+p {
+  color: $black;
+}

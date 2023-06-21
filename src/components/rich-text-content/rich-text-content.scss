@@ -1,0 +1,19 @@
+.rich-text-content {
+  &__paragraph {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: $font-size-mobile;
+
+    a {
+      color: #86BC25;
+    }
+
+    & + .headline {
+      margin-top: 36px;
+    }
+
+    @media screen and (min-width: 600px) {
+      font-size: $font-size;
+    }
+  }
+}

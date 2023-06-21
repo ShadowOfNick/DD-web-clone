@@ -1,0 +1,115 @@
+@mixin setLastChildFluid {
+  @for $i from 1 through 6 {    
+    $step: 3;
+    @if $i % 3 == 0 {
+      $step: 1;
+    } @else if $i % 3 == 1 {
+      $step: 3;
+    } @else if $i % 3 == 2 {
+      $step: 2;
+    } 
+    @if $step == 2 {
+      @media screen and (min-width: 1000px) {
+        .digital-audit-steps__step:nth-child(#{$i - 1}){
+          &:nth-last-child(2){
+            position: relative;
+            left: calc(50% + 12px);
+          }
+        }
+      }
+
+      .digital-audit-steps__step:nth-child(#{$i}){
+        &:nth-last-child(1){
+          position: relative;
+          left: calc(50% + 12px);
+        }
+      }
+    } @else {
+      .digital-audit-steps__step:nth-child(#{$i}){
+        &:last-child{
+          grid-column-end: span #{$step};          
+        }
+      }
+    }
+  }
+}
+
+.digital-audit-steps {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+  margin-top: 56px;
+
+  
+  @media screen and (min-width: 600px) {
+    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include setLastChildFluid;
+  }
+  
+  @media screen and (min-width: 1000px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__title {
+    grid-column: 1;
+    margin: 0;
+    color: $black;
+    font-family: $font-family-titles;
+    font-size: $font-size-subtitle2;
+    line-height: $line-height-button-mobile;
+    text-align: center;
+
+    @media screen and (min-width: 600px) {
+      grid-column: 1 / span 2;
+      font-size: $font-size-title2;
+      line-height: $line-height-title4-medium;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      grid-column: 1 / span 3;
+      font-size: $font-size-main-title-medium;
+      line-height: $line-height-title3;
+    }
+  }
+
+  &__step {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: $black; 
+    text-align: center;
+
+    &__number {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 61px;
+      height: 61px;
+      border-radius: 50%;
+      border: 6px solid $white;
+      background-color: $light-blue;
+      font-family: $font-family-titles;
+      font-size: $font-size-title3-mobile;
+    }
+
+    &__text {
+      flex-grow: 1;
+      width: calc(100% - 24px);
+      margin-top: -16px;
+      margin-bottom: 0;
+      padding: 24px 12px 12px;
+      background-color: $light-blue;
+      border-radius: 32px 0 32px 0;
+      font-size: $font-size-subtitle4-mobile;
+
+      @media screen and (min-width: 600px) {
+        width: auto;
+        font-size: $font-size-base;
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+.career-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  &__title {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: $black;
+    font-family: $font-family-titles;
+    font-size: $font-size-title1-mobile;
+    font-weight: $font-weight-normal;
+    text-align: center;
+    
+    @media screen and (min-width: 600px) {
+      font-size: $font-size-title2;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      font-size: $font-size-main-title-medium;
+    }
+
+    &::after {
+      content: url('./img/line-2.svg');
+      display: block;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-55%);
+    }
+  }
+  
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    
+    @media screen and (min-width: 704px) {
+      align-items: normal;
+      flex-direction: row;
+    }
+  }
+
+  &__positions {
+    flex: 1 1 0px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    padding: 0;
+    font-family: $font-family-text;
+    font-size: $font-size-subtitle2-mobile;
+    text-align: center;
+    list-style-type: disc;
+    order: 2;
+    
+    @media screen and (min-width: 704px) {
+      align-self: flex-start;
+      text-align: left;
+      order: 1;
+    }
+
+    &__item {
+      color: $black;
+
+      &:first-child {
+        font-weight: $font-weight-bold;
+        list-style: none;
+        text-decoration: underline;
+      }
+      
+      &:not(:first-child) {
+        margin-left: 18px;
+      }
+    }
+  }
+
+  &__image {
+    position: relative;
+    flex: 1 1 0px;
+    min-width: 250px;
+    min-height: 250px;
+    border-radius: 0 50%;
+    border: 5px solid $mustard;
+    order: 1;
+    overflow: hidden;
+    
+    @media screen and (min-width: 704px) {
+      min-height: 300px;
+      border: 10px solid $mustard;
+      order: 2
+    }
+  }
+
+  &__description {
+    flex: 1 1 0px;
+    align-self: flex-end;
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: $font-size-mobile;
+    text-align: center;
+    order: 3;
+
+    @media screen and (min-width: 704px) {
+      font-size: $font-size;
+      text-align: left;
+    }
+  }
+}

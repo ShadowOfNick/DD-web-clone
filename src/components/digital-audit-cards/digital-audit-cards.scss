@@ -1,0 +1,49 @@
+.digital-audit-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  gap: 16px;
+  
+  @media screen and (min-width: 600px) {
+    margin-top: 56px;
+  }
+  
+  @media screen and (min-width: 1000px) {
+    flex-wrap: nowrap;
+    gap: 42px;
+  }
+}
+
+.digital-audit-card {
+  max-width: 235px;
+  width: 100%;
+  height: auto;
+  padding: 24px;
+  color: $black;
+  background-color: $azure;
+  border: 1px solid $black;
+  box-shadow: 5px 5px 0px $azure, inset 5px 5px 0px $white;
+  border-radius: 0px 50px;
+
+  @media screen and (min-width: 1000px) {
+    max-width: 255px;
+  }
+  
+  &__title {
+    font-family: $font-family-titles;
+    font-size: $font-size-title1-mobile;
+    line-height: $line-height-title3-mobile;
+    text-align: center;
+  }
+
+  &:nth-child(2) {
+    background-color: $mustard;
+    box-shadow: 5px 5px 0px $mustard, inset 5px 5px 0px $white;
+  }
+
+  &:last-child {
+    background-color: $light-blue;
+    box-shadow: 5px 5px 0px $light-blue, inset 5px 5px 0px $white;
+  }
+}

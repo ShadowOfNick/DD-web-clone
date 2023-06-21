@@ -1,0 +1,122 @@
+.headline {
+  margin-bottom: 16px;
+  color: $black;
+
+  &--underline {
+    position: relative;
+
+    &:after {
+      content: url('./img/underline.svg');
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      transform: translateX(-56%) scale(.5);
+  
+      @media screen and (min-width: 600px) {
+        transform: translateX(-60%) scale(.8);
+      }
+  
+      @media screen and (min-width: 992px) {
+        transform: translateX(-56%) scale(1.1);
+      }
+    }
+  }
+
+  &--h1 {
+    font-family: $font-family-main-title;
+    font-size: $font-size-title1-mobile;
+    line-height: $line-height-title2-mobile;
+    font-weight: $font-weight-bold;
+
+    @media screen and (min-width: 600px) {
+      font-size: $font-size-main-title-medium;
+      line-height: $line-height-main-title;
+    }
+      
+    @media screen and (min-width: 992px) {
+      font-size: $font-size-main-title-big;
+      line-height: $line-height-main-title;
+    }
+  }
+
+  &--h2 {
+    font-family: $font-family-titles;
+    font-size: $font-size-title1-mobile;
+    line-height: $line-height-title2-mobile;
+    font-weight: $font-weight-normal;
+
+    @media screen and (min-width: 600px) {
+      font-size: $font-size-title2;
+      line-height: $line-height-title3;
+    }
+      
+    @media screen and (min-width: 992px) {
+      font-size: $font-size-main-title-medium;
+      line-height: $line-height-title4-medium;
+    }
+  }
+
+  &--h3 {
+    font-family: $font-family-titles;
+    font-size: $font-size-subtitle3-mobile;
+    line-height: $line-height-subtitle1-mobile;
+    font-weight: $font-weight-normal;
+
+    @media screen and (min-width: 600px) {
+      font-size: $font-size-subtitle4;
+      line-height: $line-height-subtitle4;
+    }
+      
+    @media screen and (min-width: 992px) {
+      font-size: $font-size-subtitle3;
+      line-height: $line-height-subtitle3;
+    } 
+  }
+
+  &--h4 {
+    font-family: $font-family-titles;
+    font-size: $font-size-subtitle4;
+    line-height: $line-height-subtitle4;
+    font-weight: $font-weight-normal;
+  }
+
+  &--h5 {
+    font-family: $font-family-titles;
+    font-size: $font-size-subtitle2;
+    line-height: $line-height-subtitle2;
+    font-weight: $font-weight-normal;
+
+    a {
+      padding: 8px 16px;
+      background-color: $light-blue;
+      color: $black;
+      border-radius: 25px;
+      border: none;
+      font-family: $font-family-text;
+      font-size: $font-size-button-mobile;
+      letter-spacing: .1rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition-property: background-color, transform;
+      transition-duration: .2s;
+      transition-timing-function: ease-in-out;
+
+      @media screen and (min-width: 992px) {
+        padding: 10px 29px;
+      }
+
+      &:hover {
+        background-color: $azure;
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &--h6 {
+    font-family: $font-family-titles;
+    font-size: $font-size-title3-mobile;
+    line-height: $line-height-title3-mobile;
+    font-weight: $font-weight-normal;
+  }
+}

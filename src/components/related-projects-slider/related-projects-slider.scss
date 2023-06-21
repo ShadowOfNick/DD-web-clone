@@ -1,0 +1,128 @@
+.related-projects-slider {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  z-index: 1;
+
+  &__title {
+    margin: 0 8px 16px;
+    font-family: $font-family-titles;
+    font-size: $font-size-title3-mobile;
+    
+    @media screen and (min-width: 600px) {
+      margin: 0 8px 24px;
+      font-size: $font-size-subtitle1;
+    }
+  }
+
+  &__prev-button,
+  &__next-button {
+    position: absolute;
+    top: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform .1s ease-in-out;
+    width: 30px;
+    height: 17px;
+
+    @media screen and (min-width: 600px) {
+      width: 17px;
+      height: 30px;
+    }
+
+    &__arrow {
+      display: block;
+      width: 17px;
+      height: 30px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url('./img/arrow.svg');
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__next-button {
+    right: 8px;
+
+    &__arrow {
+      transform: rotate(90deg);
+  
+      @media screen and (min-width: 600px) {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &__prev-button {
+    right: 58px;
+
+    &__arrow {
+      transform: rotate(-90deg);
+      
+      @media screen and (min-width: 600px) {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.slick-slide {
+  &:nth-child(1n) {
+    .related-project-card__content {
+      box-shadow: 5px 5px 0 $azure;
+
+      &:hover {
+        .related-project-card__content__title {
+          transform: translate(-5px, -10px);
+          box-shadow: 5px 5px 0 $azure;
+        }
+
+        .related-project-card__content__subtitle {
+          transform: translate(-5px, -5px);
+          box-shadow: 5px 5px 0 $azure;
+        }
+      }
+    }
+  }
+
+  &:nth-child(2n) {
+    .related-project-card__content {
+      box-shadow: 5px 5px 0 $light-blue;
+
+      &:hover {
+        .related-project-card__content__title {
+          transform: translate(-5px, -10px);
+          box-shadow: 5px 5px 0 $light-blue;
+        }
+
+        .related-project-card__content__subtitle {
+          transform: translate(-5px, -5px);
+          box-shadow: 5px 5px 0 $light-blue;
+        }
+      }
+    }
+  }
+
+  &:nth-child(3n) {
+    .related-project-card__content {
+      box-shadow: 5px 5px 0 $mustard;
+
+      &:hover {
+        .related-project-card__content__title {
+          transform: translate(-5px, -10px);
+          box-shadow: 5px 5px 0 $mustard;
+        }
+
+        .related-project-card__content__subtitle {
+          transform: translate(-5px, -5px);
+          box-shadow: 5px 5px 0 $mustard;
+        }
+      }
+    }
+  }
+}

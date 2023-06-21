@@ -1,0 +1,186 @@
+.hero-banner {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    bottom: -65px;
+    width: 170px;
+    height: 185px;
+    background-image: url('/img/GWTH.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: bottomLeftImage 25s ease-in-out infinite;
+
+    @media screen and (min-width: 600px) {
+      left: -205px;
+      bottom: 15px;
+      width: 330px;
+      height: 373px;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -70px;
+    top: -37px;
+    width: 198px;
+    height: 161px;
+    background-image: url('/img/TRNS.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: topRightImage 20s ease-in-out infinite;
+
+    @media screen and (min-width: 600px) {
+      right: -220px;
+      top: -76px;
+      width: 398px;
+      height: 323px;
+    }
+  }
+
+  &__main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 980px;
+    height: 250px;
+    margin: 0 -6px 10px -16px;
+    background-size: cover;
+    background-position: center;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    box-shadow: 10px 10px 0 $black;
+    overflow: hidden;
+    z-index: 1;
+    
+    @media screen and (min-width: 600px) {
+      height: 500px;
+      margin: 40px 0 10px;
+    }
+  
+    @media screen and (min-width: 1000px) {
+      margin: 70px auto 10px;
+    }
+    
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: $transparent-black;
+    }
+  
+    &__project-leader-label {
+      align-self: flex-end;
+      width: fit-content;
+      margin-top: 30px;
+      margin-right: 42px;
+      padding: 5px;
+      background-color: $white;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      z-index: 1;
+  
+      @media screen and (min-width: 600px) {
+        margin-right: 50px;
+      }
+  
+      &__title,
+      &__name {
+        font-family: $font-family-titles;
+        font-size: $font-size-main-subtitle-medium;
+        line-height: $line-height-main-subtitle;
+        font-weight: $font-weight-normal;
+        margin: 0;
+        
+        @media screen and (min-width: 600px) {
+          font-size: $font-size-main-subtitle-big;
+          line-height: $line-height-main-subtitle-big;
+        }
+      }
+  
+      &__title {
+        padding: 4px 18px 0 5px;
+      }
+  
+      &__name {
+        padding-right: 5px;
+        text-align: right;
+      }
+    }
+  
+    &__main-text-box {
+      width: fit-content;
+      margin: auto 34px 50px;
+      z-index: 1;
+  
+      @media screen and (min-width: 1000px) {
+        margin: auto 50px 60px;
+      }
+  
+      &__title {
+        width: fit-content;
+        margin: 0;
+        padding: 8px 10px 0;
+        color: $black;
+        background-color: $white;
+        font-family: $font-family-titles;
+        font-size: $font-size-subtitle2;
+        line-height: $line-height-subtitle4;
+        font-weight: $font-weight-normal;
+        letter-spacing: 0.05em;
+  
+        @media screen and (min-width: 600px) {
+          padding: 12px 10px 0;
+          font-size: $font-size-title2;
+          line-height: $line-height-subtitle2;
+        }
+  
+        @media screen and (min-width: 1000px) {
+          font-size: $font-size-title1;
+          line-height: $line-height-subtitle1;
+        }
+      }
+  
+      &__subtitle {
+        margin: 0;
+        padding: 6px 10px 2px;
+        color: $white;
+        background-color: $black;
+        font-family: $font-family-titles;
+        font-size: $font-size-subtitle1-mobile;
+        line-height: $line-height-subtitle1-mobile;
+        font-weight: $font-weight-normal;
+        
+        @media screen and (min-width: 600px) {
+          padding: 8px 10px 2px;
+          font-size: $font-size-subtitle2;
+          line-height: $line-height-title4-mobile;
+        }
+        
+        @media screen and (min-width: 1000px) {
+          font-size: $font-size-subtitle1;
+          line-height: $line-height-title2-mobile;
+        }
+      }
+    }
+  }
+}
+
+@keyframes bottomLeftImage {
+  0% {transform: translate(0, 0) rotate(0deg);}
+  50% {transform: translate(10px, 20px) rotate(-5deg);}
+  100% {transform: translate(0, 0) rotate(0deg);}
+}
+
+@keyframes topRightImage {
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(15deg);}
+  100% {transform: rotate(0deg);}
+}

@@ -1,0 +1,338 @@
+.carousel-item {
+  position: relative;
+  text-decoration: unset;
+
+  &__wrapper {
+    position: relative;
+    height: 150px;
+    padding-top: 120px;
+    background-position: center;
+    background-size: cover;
+    
+    @media screen and (min-width: 600px) {
+      height: 240px;
+      width: 100%;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      width: 640px;
+    }
+
+    &__title {
+      position: relative;
+      top: -50px;
+      left: -400px;
+      right: 0;
+      height: auto;
+      width: fit-content;
+      max-width: 310px;
+      padding-right: 12px;
+      color: $black;
+      background-color: $white;
+      box-shadow: 5px 10px 0px $light-blue;
+      transition-property: opacity, visibility, top, left;
+      transition-duration: 800ms;
+      
+      @media screen and (min-width: 600px) {
+        padding-right: 20px;
+        box-shadow: 10px 15px 0px $light-blue;
+        max-width: 600px;
+      }
+
+      &__text {
+        position: relative;
+        left: 7px;
+        margin: 0;
+        font-family: $font-family-main-title;
+        font-size: $font-size-title2-mobile;
+        line-height: $line-height-title2-mobile;
+        font-weight: $font-weight-bold;
+
+        @media screen and (min-width: 600px) {
+          top: 7px;
+          left: 10px;
+          font-size: $font-size-main-title-medium;
+          line-height: $line-height-main-title;
+        }
+
+        span {
+          white-space: nowrap;
+        }
+      }
+    }
+    
+    &__subtitle {
+      position: relative;
+      top: 0px;
+      left: -350px;
+      width: fit-content;
+      margin-top: 20px;
+      padding-right: 20px;
+      color: $white;
+      background-color: $black;
+      box-shadow: 5px 10px 0px #0076A8;
+      transition-property: opacity, visibility, top, left;
+      transition-duration: 800ms;
+      
+      &__text {
+        position: relative;
+        top: 7px;
+        left: 7px;
+        margin: 0;
+        color: $white;
+        font-family: $font-family-titles;
+        font-size: $font-size-subtitle4-mobile;
+        line-height: $line-height-subtitle4-mobile;
+        text-transform: uppercase;
+
+        @media screen and (min-width: 600px) {
+          left: 15px;
+          font-size: $font-size-main-subtitle-medium;
+          line-height: $line-height-main-subtitle;
+        }
+
+        @media screen and (min-width: 1000px) {
+          font-size: $font-size-main-subtitle-big;
+        }  
+      }
+    }
+  }
+}
+
+.carousel {
+  position: relative;
+  margin-left: -16px;
+  margin-right: -16px;
+  max-width: 1000px;
+  animation: showCarousel 1800ms ease-in;
+  z-index: 1;
+
+  @media screen and (min-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -32px;
+    margin-right: -32px;  
+    padding-right: 120px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    align-items: flex-end;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &__content {
+    position: relative;
+    height: 250px;
+    
+    @media screen and (min-width: 600px) {
+      height: 385px;
+      width: fit-content;
+      width: 100%;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      width: unset;
+      padding-right: 120px;
+    }
+
+    &__wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      opacity: 0%;
+
+      @media screen and (min-width: 600px) {
+        top: 45px;
+        left: 120px;
+      }
+
+      &--first,
+      &--second,
+      &--third,
+      &--fourth {
+        display: block;
+        opacity: 100%;
+        visibility: visible;
+        width: 100%;
+        transition-property: transform, top, left, opacity, visibility;
+        transition-duration: 800ms;
+      }
+
+      &--second,
+      &--third,
+      &--fourth {
+        .carousel-item__wrapper__title,
+        .carousel-item__wrapper__subtitle {
+          visibility: hidden;
+          opacity: 0;
+        }
+      }
+      
+      &--first {
+        position: relative;
+        opacity: 1;
+        z-index: 4;
+
+        .carousel-item__wrapper__title {
+          top: 0;
+          left: 10px;
+
+          @media screen and (min-width: 600px) {
+            left: 20px;
+          }
+
+          @media screen and (min-width: 1000px) {
+            left: -200px;
+          }
+        }
+
+        .carousel-item__wrapper__subtitle {
+          top: 0;
+          left: 10px;
+          
+          @media screen and (min-width: 600px) {
+            left: 20px;
+          }
+
+          @media screen and (min-width: 1000px) {
+            top: 0;
+            left: -200px;
+          }
+        }
+        
+        @media screen and (min-width: 600px) {
+          top: 0;
+          left: 0;
+        }
+      }
+
+      &--second {
+        top: 5px;
+        opacity: 75%;
+        filter: blur(1px);
+        z-index: 3;
+        
+        @media screen and (min-width: 600px) {
+          top: 15px;
+          left: 40px;
+        }
+      }
+
+      &--third {
+        top: 10px;
+        opacity: 50%;
+        filter: blur(2px);
+        z-index: 2;
+        
+        @media screen and (min-width: 600px) {
+          top: 30px;
+          left: 80px;
+        }
+      }
+
+      &--fourth {
+        top: 15px;
+        opacity: 25%;
+        filter: blur(3px);
+        z-index: 1;
+        
+        @media screen and (min-width: 600px) {
+          top: 45px;
+          left: 120px;
+        }
+      }
+    }
+  }
+
+  &__control {
+    position: absolute;
+    display: flex;
+    bottom: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media screen and (min-width: 600px) {
+      bottom: -40px;
+      display: block;
+      align-self: center;
+    }
+
+    @media screen and (min-width: 1000px) {
+      display: flex;
+    }
+
+    &__previous,
+    &__next {
+      display: none;
+
+      @media screen and (min-width: 1000px) {
+        display: block;
+        height: 15px;
+        width: 10px;
+        border: none;
+        background-color: unset;
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+    }
+    
+    &__previous {
+      background-image: url('./img/previous.svg');
+    }
+    
+    &__next {
+      margin-left: 4px;
+      background-image: url('./img/next.svg');      
+    }
+
+    &__item {
+      width: 15px;
+      height: 8px;
+      margin: 3px;
+      border: none;
+      border-radius: 6px 0 6px 0;
+      background: $transparent-black;
+      cursor: pointer;
+
+      &--activ {
+        background: $black;
+      }
+    }
+  }
+}
+
+.fade-out {
+  position: absolute;
+  top: -15px;
+  left: -40px;
+  width: 100%;
+  animation: fadeOut 400ms linear;
+  z-index: 5;
+}
+
+.fade-in {
+  top: 0;
+  left: 0;
+  animation: fadeIn 800ms ease-in-out;
+  z-index: 5;
+}
+
+@keyframes fadeOut {
+  0% {top: 0; left: 0; opacity: 1; visibility: visible;}
+  100% {top: -15px; left: -40px; opacity: 0; visibility: hidden;}
+}
+
+@keyframes fadeIn {
+  0% {top: -15px; left: -40px; opacity: 0;}
+  100% {top: 0; left: 0; opacity: 1;}
+}
+
+@keyframes showCarousel {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}

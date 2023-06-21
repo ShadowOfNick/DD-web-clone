@@ -1,0 +1,116 @@
+image: google/cloud-sdk:alpine
+
+definitions:
+  services:
+    docker:
+      memory: 3072
+
+  scripts:
+    - &initializeEnv |
+        # docker image tag based on revision:
+        # - tag vX.X.X -> image:X.X.X
+        # - master branch -> image:master
+        # - pull requests -> image:source-branch (formatter ideally as feature/CODE-NUMBER, then used as feature-CODE-NUMBER)
+        export RELEASE_TAG=$(echo "$BITBUCKET_TAG" | sed 's/v//g' | tr '[:upper:]' '[:lower:]')
+        export RELEASE_BRANCH=$(echo "$BITBUCKET_BRANCH" | sed 's#[/_]#-#g' | tr '[:upper:]' '[:lower:]')
+        export IMAGE_TAG=${RELEASE_TAG:-$RELEASE_BRANCH}
+        export IMAGE_NAME=$REGISTRY_URL/$GCLOUD_PROJECT/$PROJECT_CODE/$BITBUCKET_REPO_SLUG
+        export IMAGE_FULLNAME=$IMAGE_NAME:$IMAGE_TAG
+
+        # manage ip address whitelist
+        export PROJECT_IP_WHITELIST=""
+        while read line; do PROJECT_IP_WHITELIST="${PROJECT_IP_WHITELIST}${!line},"; done < <(env | awk -F "=" '{print $1}' | grep "IP_WHITELIST_.*")
+        export PROJECT_IP_WHITELIST="${PROJECT_IP_WHITELIST%,}"
+
+        # export project related variables
+        export APP_NAME=$BITBUCKET_REPO_SLUG
+        export APP_PORT=3000
+
+        # use docker buildkit
+        export DOCKER_BUILDKIT=1
+
+    # manage login to gcr registry
+    - &gcloudLogin |
+        echo $GCLOUD_PROJECT_KEYFILE | base64 -d > ./gcloud-api-key.json
+        gcloud auth activate-service-account --key-file ./gcloud-api-key.json
+        gcloud config set project $GCLOUD_PROJECT
+        gcloud auth configure-docker --quiet
+
+    - &configureKubectl |
+        echo $GKE_DEV_TOKEN | base64 -d > ./kube_token
+        echo $GKE_DEV_CA | base64 -d > ./kube_ca
+        kubectl config set-cluster "$GKE_DEV_CLUSTER_NAME" --server="$GKE_DEV_CLUSTER_ADDRESS" --certificate-authority="$(pwd)/kube_ca"
+        kubectl config set-credentials bitbucket --token="$(cat ./kube_token)"
+        kubectl config set-context development --cluster="$GKE_DEV_CLUSTER_NAME" --user=bitbucket
+        kubectl config use-context development
+
+  steps:
+    - step: &build-image
+        name: "Build & push docker image"
+        services:
+          - docker
+        script:
+          - *initializeEnv
+          - *gcloudLogin
+          - |
+            docker build \
+              --tag "$IMAGE_NAME:$IMAGE_TAG" \
+              --file ./resources/build/Dockerfile \
+              --cache-from "$IMAGE_NAME:$IMAGE_TAG" \
+              --cache-from "$IMAGE_NAME:master" \
+              .
+          - docker push "$IMAGE_NAME:$IMAGE_TAG"
+
+    - step: &deploy
+        name: "Deploy"
+        image: atlassian/pipelines-kubectl
+        deployment: Dev
+        script:
+          - *initializeEnv
+          - *configureKubectl
+
+          # create namespace if not exists yet
+          - kubectl create namespace $PROJECT_CODE --dry-run=client -o yaml | kubectl apply -f -
+
+          # copy gcr-registry secret from default namespace if not exists yet
+          - export secretExists=$(kubectl --namespace="$PROJECT_CODE" get secret gcr-registry --ignore-not-found -o yaml)
+          - >
+            [[ -z "$secretExists" ]] && kubectl --namespace=bitbucket get secret gcr-registry -o yaml |
+              sed "s/namespace: bitbucket/namespace: $PROJECT_CODE/" |
+              kubectl --namespace="$PROJECT_CODE" apply -f -
+
+          # deploy app from yaml file and replace image name/tag
+          - >
+            cat ./resources/deploy/*.yml |
+            sed "s#\$IMAGE_NAME#$IMAGE_NAME#" |
+            sed "s#\$IMAGE_TAG#$IMAGE_TAG#" |
+            sed "s#\$APP_NAME#$APP_NAME#" |
+            sed "s#\$APP_PORT#$APP_PORT#" |
+            sed "s#\$PROJECT_CODE#$PROJECT_CODE#" |
+            sed "s#\$PROJECT_HOST#$PROJECT_HOST#" |
+            sed "s#\$PROJECT_IP_WHITELIST#$PROJECT_IP_WHITELIST#" |
+            sed "s#\$CONTENTFUL_SPACE_ID#$CONTENTFUL_SPACE_ID#" |
+            sed "s#\$CONTENTFUL_DELIVERY_API_KEY#$CONTENTFUL_DELIVERY_API_KEY#" |
+            sed "s#\$SMTP_HOST#$SMTP_HOST#" |
+            sed "s#\$SMTP_PORT#$SMTP_PORT#" |
+            sed "s#\$SMTP_SECURE#$SMTP_SECURE#" |
+            sed "s#\$SMTP_USER#$SMTP_USER#" |
+            sed "s#\$SMTP_PASSWORD#$SMTP_PASSWORD#" |
+            sed "s#\$EMAIL_SENDER#$EMAIL_SENDER#" |
+            sed "s#\$EMAIL_REPLY_TO#$EMAIL_REPLY_TO#" |
+            kubectl --namespace="$PROJECT_CODE" apply -f -
+
+          # restart deployment
+          - kubectl --namespace="$PROJECT_CODE" rollout restart deployment "$APP_NAME"
+
+pipelines:
+  custom:
+    build-deploy:
+      - step: *build-image
+      - step: *deploy
+    build-only:
+      - step: *build-image
+
+  tags:
+    'v*':
+      - step: *build-image

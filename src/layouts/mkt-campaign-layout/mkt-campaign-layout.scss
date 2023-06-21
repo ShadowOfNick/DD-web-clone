@@ -1,0 +1,36 @@
+.mkt-campaign-layout {
+  position: relative;
+
+  .global-layout {
+    overflow: hidden;
+  }
+
+  &__text-content__top {
+    margin: 80px 0 32px;
+
+    @media screen and (min-width: 600px) {
+      margin: 100px 0 56px;
+    }
+
+    @media screen and (min-width: 1000px) {
+      margin-top: 150px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__text-content__bottom {
+    margin: 32px 0 100px;
+    
+    @media screen and (min-width: 600px) {
+      margin-top: 56px;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      margin-bottom: 150px;
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.image-content {
+  &__image {
+  position: relative;
+  margin-top: 32px;
+  width: 100%;
+  border: 1px solid $black;
+  box-shadow: 5px 5px 0px $black;
+  border-radius: 0px 100px;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+
+  @media screen and (min-width: 600px) {
+    margin-top: 56px;
+  }
+
+  & > * {
+    box-shadow: inset 5px 5px 0 $white;
+    border-radius: 0 100px;
+  }
+}
+
+  &__lightbox {
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: $transparent-black;
+    transition: all .4s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    
+    &--appear {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &__content {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      padding: 0;
+      width: 90%;
+      height: 90%;
+      max-width: 1400px;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+body.noscroll {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.image-content__gallery {
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 30px;
+  z-index: 1;
+  transform: scale(100%);
+  transition: transform 300ms;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(97%);
+    transition: transform 300ms;
+  }
+
+  & span {
+    border-radius: 4px;
+  }
+}

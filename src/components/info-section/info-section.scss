@@ -1,0 +1,110 @@
+.info-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  
+  &__title {
+    position: relative;
+    margin: 0;
+    color: $black;
+    font-family: $font-family-titles;
+    font-size: $font-size-title1-mobile;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-title2-mobile;
+    
+    @media screen and (min-width: 600px) {
+      font-size: $font-size-title2;
+      line-height: $line-height-title4-medium;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      font-size: $font-size-title1;
+      line-height: $line-height-title3;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      left: 50%;
+      display: block;
+      height: 47px;
+      width: 100%;
+      background-image: url('./img/underline-info-section.svg');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      transform: translateX(-50%);
+
+      @media screen and (min-width: 600px) {
+        bottom: -5px;
+      }
+    }
+  }
+
+  &__description {
+    margin-top: 20px;
+    font-size: $font-size-mobile;
+    font-family: $font-family-text;
+    text-align: center;
+
+    @media screen and (min-width: 600px) {
+      margin-top: 28px;
+      font-size: $font-size-base;
+      line-height: $line-height;
+    }
+
+    @media screen and (min-width: 1000px) {
+      margin-top: 34px;
+    }
+  }
+
+  &__quote {
+    position: relative;
+    max-width: 600px;
+    margin: 32px 30px 0;
+    color: $black;
+    font-style: normal;
+    font-size: $font-size-main-subtitle-big;
+    line-height: $line-height;
+    font-family: $font-family-quote;
+    font-weight: $font-weight-semibold;
+    text-align: center;
+
+    @media screen and (min-width: 704px) {
+      margin: 56px 0 0;
+      font-size: $font-size-subtitle2-mobile;
+      line-height: $line-height-subtitle2-mobile;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 41px;
+      height: 37px;
+      background-image: url('./img/quotes.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: -1;
+
+      @media screen and (min-width:704px) {
+        width: 51px;
+        height: 45px;
+      }
+    }
+
+    &::before {
+      top: 0;
+      left: -30px;
+    }
+
+    &::after {
+      bottom: 0;
+      right: -30px;
+      transform: rotate(180deg);
+    }
+  }
+}

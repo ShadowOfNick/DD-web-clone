@@ -1,0 +1,19 @@
+{
+  "common": {
+    "button": "More Projects",
+    "projectlead": "Project lead",
+    "form": {
+      "name": "Name*",
+      "company": "Company*",
+      "email": "E-mail*",
+      "phone": "Phone",
+      "message": "Type your message*",
+      "button": "Send",
+      "confirmationTitle": "Form was successfully sent",
+      "confirmationText": "We will contact you shortly.",
+      "errorTitle": "An unexpected error occurred",
+      "errorText": "Please contact our technical support at {{address}}"
+    },
+    "eventRegistratiton": "Registration"
+  }
+}

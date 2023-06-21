@@ -1,0 +1,19 @@
+{
+  "common": {
+    "button": "Více Projektů",
+    "projectlead": "Vedoucí projektu",
+    "form": {
+      "name": "Jméno*",
+      "company": "Firma*",
+      "email": "E-mail*",
+      "phone": "Telefon",
+      "message": "Vložte svou zprávu*",
+      "button": "Odeslat",
+      "confirmationTitle": "Formulář byl úspěšně odeslán",
+      "confirmationText": "Brzy se vám ozveme.",
+      "errorTitle": "Nastala neočekávaná chyba",
+      "errorText": "Prosím, kontaktujte naši technickou podporu na adrese {{address}}"
+    },
+    "eventRegistratiton": "Registrace"
+  }
+}

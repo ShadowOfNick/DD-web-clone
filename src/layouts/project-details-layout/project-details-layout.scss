@@ -1,0 +1,28 @@
+.project-details-layout {
+  position: relative;
+
+  .global-layout {
+    overflow: hidden;
+  }
+
+  &__text-content {
+    margin-top: 100px;
+    margin-bottom: 60px;
+
+    @media screen and (min-width: 600px) {
+      margin-bottom: 100px;
+    }
+
+    @media screen and (min-width: 1000px) {
+      margin-top: 150px;
+    }
+
+    &__text {
+      font-size: $font-size-mobile;
+
+      @media screen and (min-width: 600px) {
+        font-size: $font-size;
+      }
+    }
+  }
+}

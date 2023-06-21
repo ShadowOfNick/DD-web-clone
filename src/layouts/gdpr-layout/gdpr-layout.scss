@@ -1,0 +1,116 @@
+.gdpr-layout {
+  padding-top: 1px;
+  overflow: hidden;
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 0;
+    margin-bottom: 120px;
+    font-size: $font-size;
+    line-height: $line-height;
+    z-index: 1;
+    
+    @media screen and (min-width: 600px) {
+      gap: 75px;
+      margin-top: 40px;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      gap: 100px;
+      margin-top: 80px;
+      margin-bottom: 150px;
+    }
+
+    &__images-behind-title {
+      position: relative;
+      display: flex;
+      justify-content: center;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -20px;
+        bottom: -65px;
+        width: 260px;
+        height: 227px;
+        background-image: url('/img/DD-ELVT-ILL-TRANSPARENT.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        animation: bottomLeftImage 25s ease-in-out infinite;
+      
+        @media screen and (min-width: 600px) {
+          left: -180px;
+          bottom: -120px;
+          width: 360px;
+          height: 314px;
+        }
+
+        @media screen and (min-width: 1000px) {
+          left: -110px;
+          bottom: -100px;
+        }
+      }
+      
+      &::after {
+        content: '';
+        position: absolute;
+        right: -80px;
+        top: -70px;
+        width: 248px;
+        height: 214px;
+        background-image: url('/img/DD-TRNS-ILL-TRANSPARENT.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        animation: topRightImage 20s ease-in-out infinite;
+      
+        @media screen and (min-width: 600px) {
+          right: -170px;
+          top: -50px;
+          width: 350px;
+          height: 301px;
+        }
+
+        @media screen and (min-width: 1000px) {
+          right: -140px;
+          top: -100px;
+        }
+      }
+    }
+    
+    &__title {
+      width: 100%;
+      padding: 12px 7px;
+      color: $black;
+      background-color: $white;
+      box-shadow: 10px 10px 0px $black;
+      z-index: 1;
+      
+      @media screen and (min-width: 1000px) {
+        max-width: 839px;
+      }
+      
+      &__text {
+        margin: 0;
+        font-family: $font-family-titles;
+        font-weight: $font-weight-normal;
+        font-size: $font-size-title1-mobile;
+        line-height: $line-height-title1-mobile;
+        letter-spacing: 0.05em;
+        text-align: center;
+  
+        @media screen and (min-width: 600px) {
+          font-size: $font-size-title2;
+          line-height: $line-height-title2;          
+        }
+  
+        @media screen and (min-width: 1000px) {
+          font-size: $font-size-title1;
+          line-height: $line-height-title1;          
+        }
+      }
+    }
+  }
+}

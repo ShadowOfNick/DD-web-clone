@@ -1,0 +1,135 @@
+.footer {
+  position: relative;
+
+  &--homepage {
+    &::before {
+      content: '';
+      position: absolute;
+      top: -199px;
+      left: 0;
+      width: 338px;
+      height: 199px;
+      background-image: url('/img/careers-transparent.webp');
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 1;
+  
+      @media screen and (min-width: 1000px) {
+        top: -412px;
+        width: 700px;
+        height: 413px;
+      }
+    }
+  }
+
+  &__page-bottom-image {
+    position: absolute;
+    right: -14px;
+    top: -116px;
+    width: 200px;
+    height: 216px;
+    background-size: cover;
+    background-image: url('/img/offerings-hero.webp');
+
+    @media screen and (min-width: 600px) {
+      right: -68px;
+      top: -157px;
+      width: 280px;
+      height: 296px;
+    }
+
+    @media screen and (min-width: 1000px) {
+      right: 20%;
+      top: -210px;
+      width: 480px;
+      height: 396px;
+      transform: translateX(80%);
+    }
+  }
+
+  &__main-content {
+    position: relative;
+    padding: 24px 16px;
+    background-color: $black;
+    color: $white;
+    z-index: 2;
+    
+    @media screen and (min-width: 600px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    @media screen and (min-width: 1000px) {
+      padding: 60px 0 70px;
+    }
+  
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 660px;
+    }
+  
+    &__slogan {
+      margin: 24px 0;
+      color: $white;
+      font-family: $font-family-main-title;
+      font-size: $font-size-title3-mobile;
+    }
+  
+    &__icons {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+  
+      &__icon {
+        transition: transform .2s ease-in-out;
+        
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  
+    &__links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      
+      @media screen and (min-width: 600px) {
+        flex-direction: row;
+        gap: 16px;
+      }
+  
+      &__link {
+        color: $white;
+        font-size: $font-size-mobile;
+        text-decoration: none;
+        text-transform: uppercase;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  
+    &__text {
+      margin-top: 12px;
+      margin-bottom: 24px;
+      color: #75787B;
+      font-size: $font-size-footer-small;
+      line-height: $line-height-footer-small;
+      text-align: center;
+    }
+  
+    &__copyright {
+      margin: 0;
+      color: #BBBCBC;
+      font-size: $font-size-footer-medium;
+      line-height: $line-height-footer-medium;
+    }
+  }
+}

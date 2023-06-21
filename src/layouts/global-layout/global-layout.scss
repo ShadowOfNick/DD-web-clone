@@ -1,0 +1,20 @@
+.global-layout {
+  position: relative;
+  min-height: 100vh;
+    
+  &__content {
+    position: relative;
+    margin: 20px 16px 100px 16px;
+
+    @media screen and (min-width: 600px) {
+      padding: 0 24px;
+      margin-left: 32px;
+      margin-right: 32px;
+    }
+  
+    @media screen and (min-width: 1000px) {
+      margin: 20px auto 100px;
+      max-width: 1000px;
+    }
+  }
+}

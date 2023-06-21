@@ -1,0 +1,95 @@
+.project-section-card {
+  width: 100%;
+  color: $white;
+  transition: transform .2s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    transform: scale(1.02);
+    
+    .project-section-card__title {
+      margin-left: 5px;
+      margin-bottom: 5px;
+    }
+
+    .project-section-card__subtitle {
+      margin-left: 5px;
+      margin-bottom: 29px;
+    }
+
+    &:nth-child(2n+1) {
+      .project-section-card__title,
+      .project-section-card__subtitle {
+        box-shadow: 5px 5px 0 $mustard;
+      }
+    }
+
+    &:nth-child(3n+5) {
+      .project-section-card__title,
+      .project-section-card__subtitle {
+        box-shadow: 5px 5px 0 $light-blue;
+      }
+    }
+
+    &:not(:nth-child(2n+1)):not(:nth-child(3n+5)) {
+      .project-section-card__title,
+      .project-section-card__subtitle {
+        box-shadow: 5px 5px 0 $azure;
+      }
+    }
+  }
+  
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 8px;
+    overflow: hidden;
+    
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: $transparent-black;
+    }
+  }
+
+  &__title,
+  &__subtitle {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    width: fit-content;
+    margin: 0 8px 0;
+    padding: 0 7px;
+    font-family: $font-family-titles;
+    font-weight: $font-weight-normal;
+    box-shadow: 0 0 0 $azure;
+    transition-property: box-shadow, margin-bottom, margin-left;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    z-index: 1;
+  }
+
+  &__title {
+    background-color: $black;
+    text-transform: uppercase;
+    font-size: $font-size-subtitle2;
+    line-height: $line-height-subtitle2;
+  }
+
+  &__subtitle {
+    margin-bottom: 24px;
+    color: $black;
+    background-color: $white;
+    font-size: $font-size-subtitle2-mobile;
+  }
+}

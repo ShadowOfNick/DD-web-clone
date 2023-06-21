@@ -1,0 +1,125 @@
+.quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  
+  @media screen and (min-width: 704px) {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    gap: 64px;
+  }
+
+  &__image {
+    position: relative;
+    height: 250px;
+    max-width: 250px;
+    min-width: 250px;
+    width: 100%;
+    border: 5px solid #6fc2b4;
+    border-radius: 50%;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  &__citation {
+    position: relative;
+    margin-top: 15px;
+    margin-left: 30px;
+    margin-bottom: 0;
+    color: $black;
+    font-style: normal;
+    font-size: $font-size-main-subtitle-big;
+    line-height: $line-height;
+    font-family: $font-family-quote;
+    font-weight: $font-weight-semibold;
+    z-index: 1;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 41px;
+      height: 37px;
+      background-image: url('./img/quotes.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: -1;
+
+      @media screen and (min-width:704px) {
+        width: 51px;
+        height: 45px;
+      }
+
+      @media screen and (min-width: 1000px) {
+        width: 63px;
+        height: 55px;
+      }
+    }
+
+    &::before {
+      top: -20px;
+      left: -30px;
+
+      @media screen and (min-width: 704px) {
+        top: -30px;
+      }
+
+      @media screen and (min-width: 1000px) {
+        top: -30px;
+        left: -50px;
+      }
+    }
+
+    &::after {
+      bottom: -20px;
+      right: 10px;
+      transform: rotate(180deg);
+      
+      @media screen and (min-width: 704px) {
+        bottom: -30px;
+      }
+
+      @media screen and (min-width: 1000px) {
+        bottom: -40px;
+        right: 20px;
+      }
+    }
+
+    @media screen and (min-width: 704px) {
+      margin-left: 0;
+      font-size: $font-size-subtitle2-mobile;
+      line-height: $line-height-subtitle2-mobile;
+    }
+
+    @media screen and (min-width: 992px) {
+      font-size: $line-height-subtitle4;
+      line-height: $font-size-subtitle2;
+    }
+  }
+
+  &__author {
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 0;
+    margin-left: 30px;
+    color: $black;
+    font-style: normal;
+    font-family: $font-family-text;
+    font-weight: $font-weight-normal;
+    font-size: $font-size;
+    line-height: $line-height;
+    z-index: 1;
+
+    @media screen and (min-width: 704px) {
+      margin-left: 0;
+    }
+  }
+}
+
